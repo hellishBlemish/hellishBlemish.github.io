@@ -4,4 +4,5 @@ body{
 .board{
   border: 2px solid brown;
   background-color: darkgreen;
+  color: white;
 }
