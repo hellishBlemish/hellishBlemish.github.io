@@ -1,0 +1,86 @@
+/* shiny day */
+div{margin-bottom:10px;
+  display:flex;
+  align-items:center;}
+#teapot{
+  background-image: url('https://devblog.axway.com/wp-content/uploads/turntable-2.jpg');
+  width: 100px;
+  height: 100px;
+  animation: teapot_horizontal .6s steps(8) infinite,
+    teapot_vertical 4.8s steps(8) infinite;
+  border: 1px solid black;
+}
+@keyframes teapot_horizontal{
+  from{background-position-x:800px;}
+  to{background-position-x:0px;}
+}
+@keyframes teapot_vertical{
+  from{background-position-y:800px;}
+  to{background-position-y:0px;}
+}
+
+#fighters{
+  background-image:url('https://i1.wp.com/blog.kdanmobile.com/wp-content/uploads/2013/07/%E7%B8%AE%E5%9C%96%E8%A1%A8-1.jpg');
+  background-position: bottom right;
+  width:160px;
+  height:120px;
+  position:relative;
+  border: 1px solid black;
+}
+#fighters.play{
+  animation: fighters_x .5s steps(6) 5,
+    fighters_y 2.5s steps(5) 1;
+}
+@keyframes fighters_x{
+  from{background-position-x:960px;}
+  to{background-position-x:0px}
+}
+@keyframes fighters_y{
+  from{background-position-y:600px}
+  to{background-position-y:0px;}
+}
+
+#clip{
+  background-image:url('https://www.clipstudio.net/view/img/landing/lp_func/anime/func_en_18.png');
+  background-position: bottom right;
+  width: 204.8px;
+  height:124px;
+  border: 1px solid black;
+  position: relative;
+}
+#clip.play{
+  animation: clip_x .5s steps(5) 5,
+    clip_y 2.5s steps(5) 1;
+}
+@keyframes clip_x{
+  from{background-position-x:1024px;}
+  to{background-position-x:0px}
+}
+@keyframes clip_y{
+  from{background-position-y:620px}
+  to{background-position-y:0px;}
+}
+
+@keyframes fade-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+button{
+  color:lime;
+  position: absolute;
+  bottom:0;
+  left:0;
+  border:0;
+  background-color:transparent;
+  animation: fade-in 1s 1;
+}.play button{
+  display:none;
+}button.new{
+  position: relative;
+  bottom: initial;
+  left: initial;
+  width:100%;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px black;
+}
