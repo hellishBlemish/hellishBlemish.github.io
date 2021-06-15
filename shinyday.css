@@ -2,9 +2,6 @@
 
 body,html{overflow:hidden;margin:0;}
 
-*{image-rendering: optimizespeed;
-image-rendering: pixelated}
-
 #teapot{
   background-image: url('https://devblog.axway.com/wp-content/uploads/turntable-2.jpg');
   width: 100px;
@@ -102,6 +99,10 @@ button{
   background-repeat: no-repeat;
   background-size:100%;
   background-color:black;
+  image-rendering: optimizespeed;
+}
+#gameart *{
+  image-rendering: optimizespeed;
 }
 
 .outside{
