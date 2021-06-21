@@ -156,8 +156,8 @@ function checkCollision(){
               let norm = {x: magnitude.x / distance, y: magnitude.y / distance};
               let relv = {x: obj1.vx - obj2.vx, y: obj1.vy - obj2.vy};
               let speed = relv.x * norm.x + relv.y * norm.y;
-              let impulse =  2 * speed / (obj1.mass + obj2.mass);
               speed *= Math.min(obj1.restitution, obj2.restitution);
+              let impulse =  2 * speed / (obj1.mass + obj2.mass);
               if(speed<0){
                 break;
               }
