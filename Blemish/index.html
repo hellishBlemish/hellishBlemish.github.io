@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="name" content="bhellion">
 <title>Blemish - Home</title>
 <link href="style.css" rel="stylesheet">
@@ -13,9 +13,24 @@
   <h1><a href class="logo">BLEMISH</a></h1>
 </header>
 <nav>
+  <button onclick="toggleNav()">≡</button>
   <ul role="menubar">
-    <li role="none">
-      <a role="menuitem" href="">Link</a>
+    <li role="none"> <!-- dropdown menu -->
+      <a href="javascript:void(0)"
+      role="menuitem"
+      aria-haspopup="true"
+      aria-expanded="false">SubMenu </a>
+      <ul role="menu" hidden>
+        <li role="none">
+          <a role="menuitem" href> Fucking Link</a>
+        </li>
+        <li role="none">
+          <a role="menuitem" href>Other Link</a>
+        </li>
+        <li role="none">
+          <a role="menuitem" href>A Link</a>
+        </li>
+      </ul>
     </li>
     <li role="none"> <!-- dropdown menu -->
       <a href="javascript:void(0)"
@@ -38,21 +53,35 @@
       <a href="javascript:void(0)"
       role="menuitem"
       aria-haspopup="true"
-      aria-expanded="false">Menu </a>
+      aria-expanded="false">SubMenu </a>
       <ul role="menu" hidden>
         <li role="none">
-          <a role="menuitem" href>Link</a>
+          <a role="menuitem" href> Fucking Link</a>
         </li>
         <li role="none">
-          <a role="menuitem" href>Link</a>
+          <a role="menuitem" href>Other Link</a>
         </li>
         <li role="none">
-          <a role="menuitem" href>Link</a>
+          <a role="menuitem" href>A Link</a>
         </li>
       </ul>
     </li>
-    <li role="none">
-      <a role="menuitem" href="" >Link</a>
+    <li role="none"> <!-- dropdown menu -->
+      <a href="javascript:void(0)"
+      role="menuitem"
+      aria-haspopup="true"
+      aria-expanded="false">SubMenu </a>
+      <ul role="menu" hidden>
+        <li role="none">
+          <a role="menuitem" href> Fucking Link</a>
+        </li>
+        <li role="none">
+          <a role="menuitem" href>Other Link</a>
+        </li>
+        <li role="none">
+          <a role="menuitem" href>A Link</a>
+        </li>
+      </ul>
     </li>
   </ul>
 </nav>
@@ -62,6 +91,12 @@
     <h1>Heading 1</h1>
     <p>Sup. This is a sentence. In Spanish, sentence is called "oración," which is the same word used for prayer. Does that mean every word we speak reaches God? Or does it mean none of the words we speak reach God?</p>
     <p>Here is a fake link, for the purposes of seeing what links look like in normal article: <a href>Link</a>. Does that look good? Here is a <a href>click me</a> in the middle of a sentence!</p>
+    <p>This is an extra paragraph to check hor the fuck this works on mobile, hell ye. Bluh bluh bluh bluh bluh bluh bluh</p>
+    <p>This is an extra paragraph to check hor the fuck this works on mobile, hell ye. Bluh bluh bluh bluh bluh bluh bluh</p>
+    <p>This is an extra paragraph to check hor the fuck this works on mobile, hell ye. Bluh bluh bluh bluh bluh bluh bluh</p>
+    <p>This is an extra paragraph to check hor the fuck this works on mobile, hell ye. Bluh bluh bluh bluh bluh bluh bluh</p>
+    <p>This is an extra paragraph to check hor the fuck this works on mobile, hell ye. Bluh bluh bluh bluh bluh bluh bluh</p>
+    <p>This is an extra paragraph to check hor the fuck this works on mobile, hell ye. Bluh bluh bluh bluh bluh bluh bluh</p>
     <p>This is an extra paragraph to check hor the fuck this works on mobile, hell ye. Bluh bluh bluh bluh bluh bluh bluh</p>
   </article>
 </main>

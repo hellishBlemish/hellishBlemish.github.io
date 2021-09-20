@@ -1,5 +1,8 @@
 'use strict';
 
+var minWidth = 35;
+var em = parseFloat(getComputedStyle(document.body).fontSize);
+
 /*
 *   This content is licensed according to the W3C Software License at
 *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
@@ -35,6 +38,7 @@ MenubarItem.prototype.init = function () {
   this.domNode.tabIndex = -1;
 
   this.domNode.addEventListener('keydown', this.handleKeydown.bind(this));
+  this.domNode.addEventListener('click', this.handleClick.bind(this));
   this.domNode.addEventListener('focus', this.handleFocus.bind(this));
   this.domNode.addEventListener('blur', this.handleBlur.bind(this));
   this.domNode.addEventListener('mouseover', this.handleMouseover.bind(this));
@@ -50,6 +54,18 @@ MenubarItem.prototype.init = function () {
   }
 
 };
+
+MenubarItem.prototype.handleClick = function(value){
+  if(this.popupMenu.domNode.hidden){
+    if(this.popupMenu){
+      this.popupMenu.open();
+    }
+  }else{
+    if(this.popupMenu){
+      setTimeout(this.popupMenu.close(true),300);//.bind(this.  popupMenu, false), 0);
+    }
+  }
+}
 
 MenubarItem.prototype.handleKeydown = function (event) {
   var tgt = event.currentTarget,
@@ -144,15 +160,18 @@ MenubarItem.prototype.handleBlur = function (event) {
 
 MenubarItem.prototype.handleMouseover = function (event) {
   this.hasHover = true;
+  /*
   if(this.popupMenu){
     this.popupMenu.open();
   }
-};
+  */
+}; 
 
 MenubarItem.prototype.handleMouseout = function (event) {
   this.hasHover = false;
-  if(this.popupMenu){
-    setTimeout(this.popupMenu.close.bind(this.  popupMenu, false), 0);
+  
+  if(Number(document.body.clientWidth) >= minWidth*em  && this.popupMenu){
+    setTimeout(this.popupMenu.close.bind(this.  popupMenu, false), 300);
   }
 };
 
@@ -510,7 +529,7 @@ MenuItem.prototype.handleFocus = function (event) {
 
 MenuItem.prototype.handleBlur = function (event) {
   this.menu.hasFocus = false;
-  setTimeout(this.menu.close.bind(this.menu, false), 0);
+  setTimeout(this.menu.close.bind(this.menu, false), 300);
 };
 
 MenuItem.prototype.handleMouseover = function (event) {
@@ -529,7 +548,9 @@ MenuItem.prototype.handleMouseout = function (event) {
   }
 
   this.menu.hasHover = false;
-  setTimeout(this.menu.close.bind(this.menu, false), 0);
+  if(this.popupMenu && Number(document.body.clientWidth) >= minWidth*em){
+    setTimeout(this.menu.close.bind(this.menu, false), 300);
+  }
 };
 
 var PopupMenu = function (domNode, controllerObj) {
@@ -618,7 +639,9 @@ PopupMenu.prototype.handleMouseover = function (event) {
 
 PopupMenu.prototype.handleMouseout = function (event) {
   this.hasHover = false;
-  setTimeout(this.close.bind(this, false), 1);
+  if(Number(document.body.clientWidth) >= minWidth*em){
+    setTimeout(this.close.bind(this, false), 300);
+  }
 };
 
 /* FOCUS MANAGEMENT METHODS */
@@ -794,3 +817,16 @@ PopupMenu.prototype.close = function (force) {
 var menubars = [];
 document.querySelectorAll('ul[role="menubar"]').forEach((m)=>menubars.push(new Menubar(m)));
 menubars.forEach((m)=>m.init())
+
+function toggleNav(){
+  let nav = document.querySelector('nav ul[role="menubar"]');
+  let main = document.querySelector('main');
+  
+  if(nav.classList.contains('open')){
+    nav.classList.remove('open');
+    main.classList.remove('close');
+  }else{
+    nav.classList.add('open');
+    main.classList.add('close');
+  }
+}

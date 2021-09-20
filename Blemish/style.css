@@ -102,7 +102,12 @@ a:link:before{
   position: relative;
 }
 
+html{
+  font-size: 16px;
+}
+
 body{
+  font-size: 100%;
   margin:0;
   min-height: 100vh;
 }
@@ -135,15 +140,38 @@ nav li a:focus-visible:before{
   border-color: rgba(0,0,0,0);
 }
 
+nav button[onclick="toggleNav()"]{
+  display: block;
+  width: 100%;
+  border-radius:0;
+  height: 2em;
+  background-color: #000000;
+  color: white;
+  border:0;
+}
+
+nav ul[role="menubar"].open{
+  min-height: calc(100vh - 9.5em);
+  animation: 2s min-max-height 1;
+  animation-direction: reverse;
+  max-height: initial;
+  overflow: hidden;
+}
+
 nav ul[role="menubar"]{
-  margin: 0 auto;
-  max-width: 90%;
+  z-index:1;
+  background-color: #ffffff;
+  position: relative;
+  transition: min-height 1s;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin: 0;
   padding:0;
 }nav ul[role="menubar"] li{ /*change this*/
   list-style: none;
   display: block; 
   line-height: 1.5;
-  vertical-align: top;
   padding: 2px 4px;
 }nav ul[role="menubar"] li a{
   font: bold 1.2em comfortaa, sans-serif;
@@ -172,25 +200,12 @@ nav ul[role="menubar"] li ul{
   width: 100%;
   background-color: #ffffff;
   z-index:1;
+  border-left: 2px solid #000000;
 }
 
 nav ul[role="menubar"] li ul li,
 nav ul[role="menubar"] li ul li a{
   display: block;
-}
-
-nav ul[role="menubar"] li ul li a:before{
-  content:''/*▼*/;
-  border: .3em solid rgba(0,0,0,0);
-  border-top: .4em solid #000000;
-  border-bottom: 0;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  top: .4em;
-  padding:0;
-  border-radius: 0;
-  transform: rotate(-90deg)
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -206,6 +221,7 @@ footer{
   bottom: 0;
   right: 0;
   left: 0;
+  background-color: #ffffff;
 }footer p{
   text-align: center;
   line-height: 1;
@@ -217,6 +233,14 @@ main{
   padding-bottom: 3em;
   margin: 0;
   font: 1em/1.3 roboto, sans-serif;
+  transition: 1s opacity;
+}
+
+main.close{
+  opacity: 0;
+  animation: 1s min-max-height 1;
+  max-height: 0;
+  overflow: hidden;
 }
 
 main > article{
@@ -225,14 +249,35 @@ main > article{
   margin: 1em auto;
 }
 
-@media screen and (min-width: 26em){
+@media screen and (min-width: 35em){
+  nav button[onclick="toggleNav()"]{
+    display: none;
+  }
+  nav ul[role="menubar"].open{
+    min-height: initial;
+    border-bottom:0;
+    overflow: visible;
+  }
   nav ul[role="menubar"]{
   text-align: center;
+  max-width: 100%;
+  max-height: 90%;
+  display: block;
+  height: initial;
+  position: relative;
+  top:initial;
+  left:initial;
+  right:initial;
+  margin: 0 auto;
+  overflow: visible;
 }
   nav ul[role="menubar"] li{
     display: inline-block;
+    vertical-align: top;
   }
   nav ul[role="menubar"] li ul{
+    overflow: visible;
+    height: initial;
     position: absolute;
     top: 28.5px;
     left: 0;
@@ -242,7 +287,21 @@ main > article{
     border-top-color: rgba(0,0,0,0);
     padding:0;
   }
-  nav ul[role="menubar"] li ul li a:before{
-    display: none;
+  main.close{
+    display: block;
+    position: relative;
+    max-height: initial;
+    opacity: 1;
+    overflow: visible;
+    animation: none;
+  }
+}
+
+@keyframes min-max-height{
+  0%{
+    max-height: initial;
+  }
+  100%{
+    max-height: 0;
   }
 }
