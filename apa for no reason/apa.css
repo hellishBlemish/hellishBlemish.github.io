@@ -111,6 +111,7 @@ nav button:focus-visible, nav button:hover{
   display: block;
   overflow-Y: auto;
   height: calc(100vh - 54px);
+  height: calc(var(--vh) * 100 - 54px);
   width: 30em;
   max-width: 100%;
   background-color: #4b5668;
