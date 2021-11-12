@@ -159,7 +159,7 @@ NodeList.prototype.indexOf = function(obj, initial){
 
 var start = null;
 document.addEventListener('touchstart',function(e){
-  if(e.targetTouches[0].clientX > 2*(body.clientWidth / 3)){
+  if(e.targetTouches[0].clientX > 3*(body.clientWidth / 4)){
     start = e.targetTouches[0].clientY;
   }else{
     start = null;
