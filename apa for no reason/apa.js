@@ -168,16 +168,19 @@ NodeList.prototype.indexOf = function(obj, initial){
 }
 
 var start = null;
+var openMenu = false;
 document.addEventListener('touchstart',function(e){
   if(e.targetTouches[0].clientX > 3*(body.clientWidth / 4)){
     start = e.targetTouches[0].clientY;
+    openMenu = true;
+    setTimeout(()=>openMenu = false, 150)
   }else{
     start = null;
   }
 })
 
 document.addEventListener('touchend',function(e){
-  if(start && e.changedTouches[0].clientX < (body.clientWidth / 2)){
+  if(start && openMenu && e.changedTouches[0].clientX < (body.clientWidth / 2)){
     nav.open();
   }
   start = null;
