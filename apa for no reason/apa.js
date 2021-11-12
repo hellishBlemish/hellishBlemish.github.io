@@ -11,8 +11,6 @@ const main = document.querySelector('main');
 const footer = document.querySelector('body > footer');
 const scrollbarWidth = window.innerWidth - document.body.clientWidth;
 
-var vh = window.innerHeight / 100;
-document.documentElement.style.setProperty('--vh',vh+'px')
 window.addEventListener('resize', function(){
   vh = window.innerHeight / 100;
   document.documentElement.style.setProperty('--vh',vh+'px')
@@ -22,7 +20,8 @@ nav.open = function(){
   if(!navlist.expanded){
     nav.classList.add('open');
     header.style.position = 'fixed';
-    html.setAttribute('style', 'min-height: 100vh;overflow: hidden;');
+    html.style.minHeight = '100vh';
+    html.style.overflow = 'hidden';
     main.style.paddingRight = scrollbarWidth + 'px';
     footer.style.paddingRight = scrollbarWidth + 'px';
     navbtn.setAttribute('aria-expanded','true');
@@ -38,7 +37,8 @@ nav.close = function(){
   if(navlist.expanded){
     nav.classList.remove('open');
     header.style.position = '';
-    html.removeAttribute('style');
+    html.style.minHeight = '';
+    html.style.overflow = '';
     main.removeAttribute('style');
     footer.removeAttribute('style');
     navbtn.setAttribute('aria-expanded','false');
