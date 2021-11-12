@@ -171,16 +171,16 @@ var start = null;
 var openMenu = false;
 document.addEventListener('touchstart',function(e){
   if(e.targetTouches[0].clientX > 3*(body.clientWidth / 4)){
-    start = e.targetTouches[0].clientY;
+    start = e.targetTouches[0].clientX;
     openMenu = true;
-    setTimeout(()=>openMenu = false, 150)
+    setTimeout(()=>openMenu = false, 200)
   }else{
     start = null;
   }
 })
 
 document.addEventListener('touchend',function(e){
-  if(start && openMenu && e.changedTouches[0].clientX < (body.clientWidth / 2)){
+  if(start && openMenu && (start - e.changedTouches[0].clientX > 149)){
     nav.open();
   }
   start = null;
