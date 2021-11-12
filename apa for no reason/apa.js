@@ -171,11 +171,11 @@ var start = null;
 var startY = null;
 var openMenu = false;
 document.addEventListener('touchstart',function(e){
-  if(e.targetTouches[0].clientX > 3*(body.clientWidth / 4)){
+  if(e.targetTouches[0].clientX > 2*(body.clientWidth / 3)){
     start = e.targetTouches[0].clientX;
     startY = e.targetTouches[0].clientY;
     openMenu = true;
-    setTimeout(()=>openMenu = false, 200)
+    setTimeout(()=>openMenu = false, 150)
   }else{
     start = null;
     startY = null;
@@ -183,7 +183,7 @@ document.addEventListener('touchstart',function(e){
 })
 
 document.addEventListener('touchend',function(e){
-  if(start && openMenu && (start - e.changedTouches[0].clientX > 149) && (startY - e.changedTouches[0].clientY > -100) && (startY - e.changedTouches[0].clientY < 100)){
+  if(start && openMenu && (start - e.changedTouches[0].clientX > 30) && (startY - e.changedTouches[0].clientY > -100) && (startY - e.changedTouches[0].clientY < 100)){
     nav.open();
   }
   start = null;
