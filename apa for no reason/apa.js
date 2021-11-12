@@ -170,7 +170,7 @@ document.addEventListener('touchend',function(e){
   if(start){
     if(e.changedTouches[0].clientX < (body.clientWidth / 2)){
       nav.open();
-      start = null;
     }
   }
+  start = null;
 })
