@@ -2,6 +2,11 @@ html{
   overflow:auto;
 }
 
+html.open-nav{
+  min-height: 100vh;
+  overflow: hidden;
+}
+
 body{
   margin:0;
   font-family: Lucinda Sans Unicode, sans-serif;
@@ -30,6 +35,10 @@ header{
   overflow: hidden;
   z-index: 10;
   transition: height .5s;
+}
+
+html.open-nav header{
+  position: fixed;
 }
 
 a.logo:link, a.logo:visited{
@@ -63,10 +72,15 @@ nav{
   transition: width .5s, height .5s;
 }
 
-nav.open{
+html.open-nav nav{
   bottom: 0;
   position: fixed;
   z-index: 10;
+}
+
+html.open-nav nav button{
+  background-color: transparent;
+  border-color: transparent;
 }
 
 nav button {
@@ -107,32 +121,22 @@ nav button:focus-visible, nav button:hover{
   transition: background-color .3s, width .3s, height .3s;
 }
 
-.open #navmenu{
+html.open-nav #navmenu{
   display: block;
   overflow-Y: auto;
   height: calc(100vh - 54px);
-  height: calc(var(--vh) * 100 - 54px);
+  height: calc(100 * var(--vh) - 54px);
   width: 30em;
   max-width: 100%;
   background-color: #4b5668;
 }
 
-/*
-en
-feb
-marzo
-abril
-
-may
-jun
-jul
-aug
-
-sep
-oct
-nov
-dic
-*/
+#navmenu > p{
+  height:0;
+  overflow:hidden;
+  margin:0;
+  padding:0;
+}
 
 #navmenu footer{
   display: block;
@@ -150,6 +154,7 @@ dic
   padding:0;
   margin:0;
   list-style:none;
+  border-bottom: 1px outset #e1cfc3; 
 }
 
 #navmenu > ul > li > a{
@@ -160,7 +165,18 @@ dic
   color: #e1cfc3;
 }
 
-#navmenu > ul > li > a:hover, #navmenu > ul > li > a:focus{
+#navmenu > ul > li > a:not([href]):after{
+  content: '';
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: #191819;
+  opacity: .2;
+}
+
+#navmenu > ul > li > a[href]:hover, #navmenu > ul > li > a[href]:focus{
   background-color: #efa24d;
   color: #000000;
   outline: none;
@@ -179,6 +195,10 @@ a:link{
 main{
   padding-top: 55px;
   padding-bottom: 5em;
+}
+
+html.open-nav body > main, html.open-nav body > footer{
+  padding-right: var(--scrollbarWidth);
 }
 
 main article{

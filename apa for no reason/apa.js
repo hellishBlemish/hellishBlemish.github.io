@@ -1,15 +1,20 @@
 'use strict';
 
-const header = document.querySelector('header');
 const html = document.querySelector('html');
 const body = document.body;
+const header = document.querySelector('header');
 const nav = document.querySelector('nav');
 const navbtn = nav.querySelector('button');
-const navlist = nav.querySelectorAll('ul a');
+const navlist = nav.querySelectorAll('ul a[href]');
 navlist.expanded = false;
 const main = document.querySelector('main');
 const footer = document.querySelector('body > footer');
+
 const scrollbarWidth = window.innerWidth - document.body.clientWidth;
+document.documentElement.style.setProperty('--scrollbarWidth',scrollbarWidth+'px');
+
+var vh = window.innerHeight / 100;
+document.documentElement.style.setProperty('--vh',vh+'px');
 
 window.addEventListener('resize', function(){
   vh = window.innerHeight / 100;
@@ -18,12 +23,7 @@ window.addEventListener('resize', function(){
 
 nav.open = function(){
   if(!navlist.expanded){
-    nav.classList.add('open');
-    header.style.position = 'fixed';
-    html.style.minHeight = '100vh';
-    html.style.overflow = 'hidden';
-    main.style.paddingRight = scrollbarWidth + 'px';
-    footer.style.paddingRight = scrollbarWidth + 'px';
+    html.classList.add('open-nav');
     navbtn.setAttribute('aria-expanded','true');
     navbtn.innerHTML = '&times;';
     navlist.expanded = true;
@@ -35,12 +35,7 @@ nav.open = function(){
 
 nav.close = function(){
   if(navlist.expanded){
-    nav.classList.remove('open');
-    header.style.position = '';
-    html.style.minHeight = '';
-    html.style.overflow = '';
-    main.removeAttribute('style');
-    footer.removeAttribute('style');
+    html.classList.remove('open-nav');
     navbtn.setAttribute('aria-expanded','false');
     navbtn.innerHTML = '&#9776;';
     navlist.expanded = false;
@@ -162,11 +157,16 @@ nav.querySelector('ul').addEventListener('keydown',function(e){
 })
 
 NodeList.prototype.indexOf = function(obj, initial){
+  if(initial && !this[initial]){
+    return -1;
+  }
   for(let i = (initial || 0); i < this.length; i++){
     if(this[i] === obj){return i}
   }return -1;
 }
 
+
+// open navigation tab by swiping left from right corner
 var start = null;
 var startY = null;
 var openMenu = false;
