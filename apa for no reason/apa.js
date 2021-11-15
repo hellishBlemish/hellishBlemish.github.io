@@ -10,15 +10,20 @@ navlist.expanded = false;
 const main = document.querySelector('main');
 const footer = document.querySelector('body > footer');
 
-const scrollbarWidth = window.innerWidth - document.body.clientWidth;
+var scrollbarWidth = window.innerWidth - document.body.clientWidth;
 document.documentElement.style.setProperty('--scrollbarWidth',scrollbarWidth+'px');
 
 var vh = window.innerHeight / 100;
 document.documentElement.style.setProperty('--vh',vh+'px');
 
 window.addEventListener('resize', function(){
+  let olvh = vh;
   vh = window.innerHeight / 100;
-  document.documentElement.style.setProperty('--vh',vh+'px')
+  if(olvh !== vh) document.documentElement.style.setProperty('--vh',vh+'px')
+  
+  let sw = scrollbarWidth;
+  scrollbarWidth = window.innerWidth - document.body.clientWidth;
+  if(sw !== scrollbarWidth) document.documentElement.style.setProperty('--scrollbarWidth',scrollbarWidth+'px');
 })
 
 nav.open = function(){
@@ -27,8 +32,8 @@ nav.open = function(){
     navbtn.setAttribute('aria-expanded','true');
     navbtn.innerHTML = '&times;';
     navlist.expanded = true;
-    navlist.forEach((link)=>link.removeAttribute('tabindex'));
-    nav.querySelector('footer a').removeAttribute('tabindex');
+    navlist.forEach((link)=>link.setAttribute('tabindex', '0'));
+    nav.querySelector('footer a').setAttribute('tabindex', '0');
     html.addEventListener('click', closeOnBlur)
   }
 }
@@ -63,6 +68,14 @@ navbtn.addEventListener('keydown',function(e){
         nav.close();
       }
     }, 900)
+  }
+  if(navlist.expanded){
+    if(e.key === 'ArrowDown'){
+      navlist[0].focus();
+    }
+    if(e.key === 'ArrowUp'){
+      navlist[navlist.length - 1].focus();
+    }
   }
 })
 
@@ -171,7 +184,7 @@ var start = null;
 var startY = null;
 var openMenu = false;
 document.addEventListener('touchstart',function(e){
-  if(e.targetTouches[0].clientX > 2*(body.clientWidth / 3)){
+  if(e.targetTouches[0].clientX > 3*(body.clientWidth / 4)){
     start = e.targetTouches[0].clientX;
     startY = e.targetTouches[0].clientY;
     openMenu = true;

@@ -2,6 +2,16 @@ html{
   overflow:auto;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+
+.alegreya{
+  font-family: 'Alegreya', serif;
+  font-size: 12pt;
+}
+.sans-serif{
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 html.open-nav{
   min-height: 100vh;
   overflow: hidden;
@@ -10,7 +20,7 @@ html.open-nav{
 body{
   margin:0;
   font-family: Lucinda Sans Unicode, sans-serif;
-  font-size: 16px;
+  font-size: 11pt;
   line-height: 1.5;
   min-height: 100vh;
   background-color: #191819;
@@ -26,7 +36,7 @@ body{
 
 header{
   position: absolute;
-  height: 54px;
+  height: 50px;
   margin:0;
   background-color: #4b5668;
   top: 0;
@@ -42,7 +52,7 @@ html.open-nav header{
 }
 
 a.logo:link, a.logo:visited{
-  font-size: 2em;
+  font-size: 32px;
   text-decoration: none;
   font-weight: bold;
   color: #efa24d;
@@ -65,9 +75,9 @@ nav{
   text-align: right;
   top:0;
   overflow: hidden;
-  width: 56px;
+  width: 54px;
   display: block;
-  height: 54px;
+  height: 50px;
   z-index: 10;
   transition: width .5s, height .5s;
 }
@@ -78,18 +88,13 @@ html.open-nav nav{
   z-index: 10;
 }
 
-html.open-nav nav button{
-  background-color: transparent;
-  border-color: transparent;
-}
-
 nav button {
   background-color: black;
   color: white;
   font-family: times, georgia, serif;
   line-height: 1.5em;
-  height: 54px;
-  width: 56px;
+  height: 50px;
+  width: 54px;
   text-align: center;
   font-size: 2em;
   padding:0;
@@ -108,7 +113,7 @@ nav button:focus-visible, nav button:hover{
 #navmenu{
   position: fixed;
   right:0;
-  top:54px;
+  top: 50px;
   text-align: left;
   padding:0;
   margin:0;
@@ -124,8 +129,8 @@ nav button:focus-visible, nav button:hover{
 html.open-nav #navmenu{
   display: block;
   overflow-Y: auto;
-  height: calc(100vh - 54px);
-  height: calc(100 * var(--vh) - 54px);
+  height: calc(100vh - 50px);
+  height: calc(100 * var(--vh) - 50px);
   width: 30em;
   max-width: 100%;
   background-color: #4b5668;
@@ -222,6 +227,8 @@ body > footer{
   padding-top: 1.5em;
   margin:0;
   border-top: 1px inset #f6f4f2;
+  overflow: auto;
+  scrollbar-width: thin;
 }
 #navmenu > footer{
   height: 5em;
@@ -232,4 +239,5 @@ body > footer{
 body > footer p, #navmenu > footer p{
   margin:0;
   text-align: center;
+  white-space: nowrap;
 }
