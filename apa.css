@@ -1,0 +1,243 @@
+html{
+  overflow:auto;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+
+.alegreya{
+  font-family: 'Alegreya', serif;
+  font-size: 12pt;
+}
+.sans-serif{
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+html.open-nav{
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body{
+  margin:0;
+  font-family: Lucinda Sans Unicode, sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  min-height: 100vh;
+  background-color: #191819;
+  color: #f6f4f2;
+  height: 100%;
+  overflow-Y: hidden;
+}
+
+*{
+  position: relative;
+  box-sizing: border-box;
+}
+
+header{
+  position: absolute;
+  height: 50px;
+  margin:0;
+  background-color: #4b5668;
+  top: 0;
+  right:0;
+  left:0;
+  overflow: hidden;
+  z-index: 10;
+  transition: height .5s;
+}
+
+html.open-nav header{
+  position: fixed;
+}
+
+a.logo:link, a.logo:visited{
+  font-size: 32px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #efa24d;
+  text-transform: uppercase;
+  position: absolute;
+  left: 8px;
+  margin:0;
+  white-space: nowrap;
+}
+
+a.logo:hover, a.logo:focus{
+  color: #e1cfc3;
+  outline: none;
+  text-decoration: underline;
+}
+
+nav{
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top:0;
+  overflow: hidden;
+  width: 54px;
+  display: block;
+  height: 50px;
+  z-index: 10;
+  transition: width .5s, height .5s;
+}
+
+html.open-nav nav{
+  bottom: 0;
+  position: fixed;
+  z-index: 10;
+}
+
+nav button {
+  background-color: black;
+  color: white;
+  font-family: times, georgia, serif;
+  line-height: 1.5em;
+  height: 50px;
+  width: 54px;
+  text-align: center;
+  font-size: 2em;
+  padding:0;
+  margin:0;
+  border: 2px solid black;
+  z-index: 100;
+}
+
+nav button:focus-visible, nav button:hover{
+  background-color: #efa24d;
+  border-color: #efa24d;
+  outline: 0;
+  color: black;
+}
+
+#navmenu{
+  position: fixed;
+  right:0;
+  top: 50px;
+  text-align: left;
+  padding:0;
+  margin:0;
+  white-space: nowrap;
+  overflow-Y: hidden;
+  overflow-X: hidden;
+  border-top: 1px inset #f6f4f2;
+  height:0;
+  width:0;
+  transition: background-color .3s, width .3s, height .3s;
+}
+
+html.open-nav #navmenu{
+  display: block;
+  overflow-Y: auto;
+  height: calc(100vh - 50px);
+  height: calc(100 * var(--vh) - 50px);
+  width: 30em;
+  max-width: 100%;
+  background-color: #4b5668;
+}
+
+#navmenu > p{
+  height:0;
+  overflow:hidden;
+  margin:0;
+  padding:0;
+}
+
+#navmenu footer{
+  display: block;
+}
+
+#navmenu ul{
+  display: inline-block;
+  padding:0;
+  margin:0;
+  width: 100%;
+  min-height: calc(100% - 5em)
+}
+
+#navmenu li{  
+  padding:0;
+  margin:0;
+  list-style:none;
+  border-bottom: 1px outset #e1cfc3; 
+}
+
+#navmenu > ul > li > a{
+  display: block;
+  line-height: 3em;
+  padding: 0 2em;
+  text-decoration: none;
+  color: #e1cfc3;
+}
+
+#navmenu > ul > li > a:not([href]):after{
+  content: '';
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: #191819;
+  opacity: .2;
+}
+
+#navmenu > ul > li > a[href]:hover, #navmenu > ul > li > a[href]:focus{
+  background-color: #efa24d;
+  color: #000000;
+  outline: none;
+}
+
+a:link{
+  color: #52A8FF;
+}a:visited{
+  color: #FF61FF; /*#F27DC7*/
+}a:hover, a:focus{
+  text-decoration: underline double;
+}a:active{
+  color: #FF8060;
+}
+
+main{
+  padding-top: 55px;
+  padding-bottom: 5em;
+}
+
+html.open-nav body > main, html.open-nav body > footer{
+  padding-right: var(--scrollbarWidth);
+}
+
+main article{
+  margin: 1em auto;
+  width: 90%;
+  max-width: 60em;
+  display: block;
+}
+
+main article h1{
+  font-size: 2em;
+  margin:0;
+}
+
+body > footer{
+  position: absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  height: 5em;
+  padding-top: 1.5em;
+  margin:0;
+  border-top: 1px inset #f6f4f2;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+#navmenu > footer{
+  height: 5em;
+  padding-top: 1.5em;
+  margin:0;
+  border-top: 1px inset #f6f4f2;
+}
+body > footer p, #navmenu > footer p{
+  margin:0;
+  text-align: center;
+  white-space: nowrap;
+}
