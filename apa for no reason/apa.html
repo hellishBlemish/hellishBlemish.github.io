@@ -1,14 +1,25 @@
 <!doctype html>
 <html lang="en-us">
 <head>
+  <link rel="stylesheet" href="apa.css">
+  <style></style>
+  <script>
+  const lightModeCSS ='body, body *:not(nav):not(nav *):not(header):not(header *){background-color: #f6f4f2;color:#191819;}a:link{color:rgb(0,102,204)}a:visited{color:#551a8b}nav footer p{color:#f6f4f2}nav footer a:link{color: #52A8FF}nav footer a:visited{color:#FF61FF}';
+  if(localStorage && localStorage.getItem && localStorage.getItem('light') == 'on'){
+    document.querySelector('style').innerHTML = lightModeCSS;
+  }
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="apa.css">
   <title>APA for no reason</title>
 </head>
 <body>
   <header>
     <a class="logo" href>SITE NAME</a>
+    <label for="light-switch">
+      Light:
+      <button id="light-switch" aria-label="toggle site theme" onclick="toggleLight(this)"></button>
+    </label>
   </header>
   <nav>
     <button aria-label="toggle navigation" aria-expanded="false" aria-haspopup="true">☰</button>

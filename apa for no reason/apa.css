@@ -88,7 +88,7 @@ html.open-nav nav{
   z-index: 10;
 }
 
-nav button {
+nav button[aria-haspopup] {
   background-color: black;
   color: white;
   font-family: times, georgia, serif;
@@ -103,7 +103,7 @@ nav button {
   z-index: 100;
 }
 
-nav button:focus-visible, nav button:hover{
+nav button[aria-haspopup]:focus-visible, nav button[aria-haspopup]:hover{
   background-color: #efa24d;
   border-color: #efa24d;
   outline: 0;
@@ -168,6 +168,66 @@ html.open-nav #navmenu{
   padding: 0 2em;
   text-decoration: none;
   color: #e1cfc3;
+  width: 100%;
+  border:0;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+header > label{
+  float: right;
+  margin-right: 60px;
+  color: #f6f4f2;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+#light-switch{
+  box-sizing: initial;
+  display: inline-block;
+  height: 2em;
+  width: 4em;
+  border-radius: calc(1em + 2px);
+  border:2px solid #4b5668;
+  vertical-align: 5px;
+}
+
+#light-switch:focus-visible{
+  outline:0;
+}
+
+#light-switch:focus-visible:after{
+  background-color: #efa24d;
+  color: black;
+}
+
+#light-switch:after{
+  content: '';
+  height: 100%;
+  width: 50%;
+  background-color: #191819;
+  color: #e1cfc3;
+  border-radius: 1em;
+  position: absolute;
+  top:0;
+  transition: left .25s;
+  line-height: 2em;
+  text-align: center;
+  padding:0;
+  margin:0;
+  vertical-align: center;
+  font-size: 1em;
+}
+#light-switch.on:after{
+  content: 'on';
+  left: 0;
+}
+#light-switch.off:after{
+  content: 'off';
+  left: 50%;
 }
 
 #navmenu > ul > li > a:not([href]):after{
@@ -181,7 +241,7 @@ html.open-nav #navmenu{
   opacity: .2;
 }
 
-#navmenu > ul > li > a[href]:hover, #navmenu > ul > li > a[href]:focus{
+#navmenu > ul > li > a[href]:hover, #navmenu > ul > li > a[href]:focus, #navmenu > ul > li > button[onclick]:hover, #navmenu > ul > li > button[onclick]:focus{
   background-color: #efa24d;
   color: #000000;
   outline: none;
@@ -230,6 +290,7 @@ body > footer{
   overflow: auto;
   scrollbar-width: thin;
 }
+
 #navmenu > footer{
   height: 5em;
   padding-top: 1.5em;
