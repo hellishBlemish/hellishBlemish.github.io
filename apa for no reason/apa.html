@@ -2,27 +2,20 @@
 <html lang="en-us">
 <head>
   <link rel="stylesheet" href="apa.css">
-  <style></style>
-  <script>
-  const lightModeCSS ='body, body *:not(nav):not(nav *):not(header):not(header *){background-color: #f6f4f2;color:#191819;}a:link{color:rgb(0,102,204)}a:visited{color:#551a8b}nav footer p{color:#f6f4f2}nav footer a:link{color: #52A8FF}nav footer a:visited{color:#FF61FF}';
-  if(localStorage && localStorage.getItem && localStorage.getItem('light') == 'on'){
-    document.querySelector('style').innerHTML = lightModeCSS;
-  }
-  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>APA for no reason</title>
+  <style></style>
 </head>
 <body>
   <header>
     <a class="logo" href>SITE NAME</a>
-    <label for="light-switch">
-      Light:
-      <button id="light-switch" aria-label="toggle site theme" onclick="toggleLight(this)"></button>
+    <label id="light-switch">
+      Light<button aria-label="toggle theme" onclick="toggleLight(this)"></button>
     </label>
   </header>
   <nav>
-    <button aria-label="toggle navigation" aria-expanded="false" aria-haspopup="true">☰</button>
+    <button aria-label="toggle navigation" aria-expanded="false" aria-haspopup="true" onclick="toggleNav()">☰</button>
     <div id="navmenu" tabindex="-1">
     <ul>
       <li>
@@ -33,11 +26,11 @@
       </li>
     </ul>
     <footer>
-      <p>&copy; SITE NAME & <a href="#owner" title="ownerName">ownerName</a> 2021-2022</p>
+      <p>&copy; SITE NAME 2021-2022</p>
     </footer>
     </div>
   </nav>
-  <main>
+  <main id="#main">
     <article>
       <h1>Welcome!</h1>
       <p>This page is very empty. Just like my soul! Enjoy your stay in this silly project that went nowhere because apparently I just like to make contentless shitty websites. Like decorating an empty sketchbook...</p>
@@ -55,8 +48,9 @@
     </article>
   </main>
   <footer>
-    <p>&copy; SITE NAME & <a href="#owner">ownerName</a> 2021-2022</p>
+    <p>&copy; SITE NAME 2021-2022</p>
   </footer>
+  <button id="stickybtn" tabindex="-1" onclick="toggleNav()">☰</button>
   <script src="apa.js"></script>
 </body>
 </html>

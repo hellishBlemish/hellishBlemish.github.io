@@ -9,6 +9,7 @@ const navlist = nav.querySelectorAll('ul a[href]');
 navlist.expanded = false;
 const main = document.querySelector('main');
 const footer = document.querySelector('body > footer');
+const light = header.querySelector('#light-switch');
 
 var scrollbarWidth = window.innerWidth - document.body.clientWidth;
 document.documentElement.style.setProperty('--scrollbarWidth',scrollbarWidth+'px');
@@ -33,8 +34,8 @@ nav.open = function(){
     navbtn.innerHTML = '&times;';
     navlist.expanded = true;
     navlist.forEach(function(link){link.setAttribute('tabindex', '0')});
-    nav.querySelector('footer a').setAttribute('tabindex', '0');
-    html.addEventListener('click', closeOnBlur)
+    navbtn.focus();
+    setTimeout(function(){html.addEventListener('click',closeOnBlur)}, 10);
   }
 }
 
@@ -45,37 +46,38 @@ nav.close = function(){
     navbtn.innerHTML = '&#9776;';
     navlist.expanded = false;
     navlist.forEach(function(link){link.setAttribute('tabindex','-1')});
-    nav.querySelector('footer a').setAttribute('tabindex','-1');
     html.removeEventListener('click',closeOnBlur);
   }
 }
 
-navbtn.addEventListener('click',function(){
+function toggleNav(){
   if(navlist.expanded){
     nav.close();
   }else{
     nav.open();
   }
-});
+}
 
 navbtn.addEventListener('keydown',function(e){
-  if(charCheck(e.key)){
-    navlist.focusByChar(0,e.key);
-  }
-  if(e.shiftKey && e.key === 'Tab'){
-    setTimeout(function(){
-      if(!nav.contains(document.activeElement)){
-        nav.close();
-      }
-    }, 900)
-  }
+  if(e.key === 'ArrowLeft' || e.key === 'ArrowRight'){
+      light.focus();
+    }
   if(navlist.expanded){
+    if(charCheck(e.key)){
+      navlist.focusByChar(0,e.key);
+    }
     if(e.key === 'ArrowDown'){
       navlist[0].focus();
     }
     if(e.key === 'ArrowUp'){
       navlist[navlist.length - 1].focus();
     }
+  }
+})
+
+light.addEventListener('keydown',function(e){
+  if(e.key === 'ArrowLeft' || e.key === 'ArrowRight'){
+    navbtn.focus();
   }
 })
 
@@ -107,13 +109,7 @@ for(let i = 0; i < navlist.length; i++){
   })
 }
 
-function closeOnBlur(e){
-  if(e.target !== nav && !nav.contains(e.target) && e.target !== header && !header.contains(e.target)){
-    nav.close();
-  }
-}
-  
-nav.querySelector('footer a').addEventListener('keydown',function(e){
+navlist[navlist.length - 1].addEventListener('keydown',function(e){
   if(!e.shiftKey && e.key === 'Tab'){
     setTimeout(function(){
       if(!nav.contains(document.activeElement)){
@@ -122,6 +118,12 @@ nav.querySelector('footer a').addEventListener('keydown',function(e){
     }, 900)
   }
 })
+
+function closeOnBlur(e){
+  if(e.target !== nav && !nav.contains(e.target) && e.target !== header && !header.contains(e.target)){
+    nav.close();
+  }
+}
 
 function charCheck(str) {
   return str.length === 1 && str.match(/\S/);
@@ -172,6 +174,7 @@ NodeList.prototype.indexOf = function(obj, initial){
 
 
 // open navigation tab by swiping left from right side of screen
+/*
 var start = null;
 var startY = null;
 var openMenu = false;
@@ -193,22 +196,45 @@ document.addEventListener('touchend',function(e){
   start = null;
   startY = null;
 })
+*/
 
 // light mode
-function toggleLight(){
-  if(localStorage.getItem('light') === 'off'){
-    localStorage.setItem('light','on')
-    document.querySelector('style').innerHTML = lightModeCSS;
-    document.getElementById('light-switch').classList.replace('off','on');
+const lightModeCSS = `
+body, body *:not(nav):not(nav *):not(header):not(header *){
+  background-color: #f6f4f2;
+  color:#191819;
+}
+#light-switch button{background-color: #f6f4f2}
+#light-switch button:after{
+  content: 'on';
+  left: 0;
+}
+a:link{color:rgb(0,102,204)}
+a:visited{color:#551a8b}
+nav footer p{color:#f6f4f2}
+nav footer a:link{color: #52A8FF}
+nav footer a:visited{color:#FF61FF}
+`
+if(window.matchMedia('(prefers-color-scheme: light)').matches){
+  if(localStorage.getItem('light') && localStorage.getItem('light') === 'off'){
+    html.classList.add('dark');
   }else{
-    localStorage.setItem('light','off')
-    document.querySelector('style').innerHTML = document.querySelector('style').innerHTML.replace(lightModeCSS,'')
-    document.getElementById('light-switch').classList.replace('on','off');
+    html.classList.add('light');
+  }
+}else{
+  if(localStorage.getItem('light') === 'on'){
+    html.classList.add('light');
   }
 }
 
-if(localStorage && localStorage.getItem('light') === 'on'){
-  document.getElementById('light-switch').classList.add('on');
-}else{
-  document.getElementById('light-switch').classList.add('off');
+function toggleLight(){
+  if(localStorage.getItem('light') === 'on'){
+    localStorage.setItem('light','off')
+    html.classList.remove('light');
+    html.classList.add('dark');
+  }else{
+    localStorage.setItem('light','on')
+    html.classList.remove('dark');
+    html.classList.add('light');
+  }
 }
