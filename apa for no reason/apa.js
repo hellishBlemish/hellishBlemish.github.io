@@ -224,6 +224,8 @@ if(window.matchMedia('(prefers-color-scheme: light)').matches){
 }else{
   if(localStorage.getItem('light') === 'on'){
     html.classList.add('light');
+  }else{
+    html.classList.add('dark');
   }
 }
 
