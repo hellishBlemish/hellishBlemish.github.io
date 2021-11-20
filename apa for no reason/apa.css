@@ -361,8 +361,8 @@ body > footer p, #navmenu > footer p{
     background-color: #f6f4f2;
     color:black;
   }
-  html:not(.dark) a:link{color:rgb(0,102,204)}
-  html:not(.dark) a:visited{color:#551a8b}
+  html:not(.dark) a:not(.logo):link{color:rgb(0,102,204)}
+  html:not(.dark) a:not(.logo):visited{color:#551a8b}
   html:not(.dark) nav footer p{color:#f6f4f2}
   html:not(.dark) nav footer a:link{color: #52A8FF}
   html:not(.dark) nav footer a:visited{color:#FF61FF}
