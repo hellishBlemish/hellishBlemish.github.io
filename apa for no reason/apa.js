@@ -230,7 +230,7 @@ if(window.matchMedia('(prefers-color-scheme: light)').matches){
 }
 
 function toggleLight(){
-  if(localStorage.getItem('light') === 'on'){
+  if(html.matches('.light')){
     localStorage.setItem('light','off')
     html.classList.remove('light');
     html.classList.add('dark');
