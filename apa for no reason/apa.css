@@ -213,7 +213,7 @@ html.open-nav #navmenu{
   overflow-Y: auto;
   height: calc(100vh - 60px);
   height: calc(100 * var(--vh) - 60px);
-  width: 22em;
+  width: 15em;
   max-width: 100%;
   background-color: #4b5668;
 }
@@ -254,7 +254,6 @@ html.open-nav #navmenu{
   border:0;
   background-color: transparent;
   text-align: left;
-  font-size: 1em;
   cursor: pointer;
   font-family: inherit;
 }
@@ -287,8 +286,7 @@ a:link{
 }
 
 main{
-  padding-top: 60px;
-  padding-bottom: 5em;
+  margin-bottom: 1em;
 }
 
 main article{
@@ -301,6 +299,39 @@ main article{
 main article h1{
   font-size: 2em;
   margin:0;
+}
+
+aside.ad{
+  overflow: hidden;
+  position: relative;
+  padding-top: 15%;
+  width: 90%;
+  height: 0;
+  max-width: 60em;
+  margin: auto;
+  
+}aside.ad iframe{
+  position: absolute;
+  top:0;
+  left:0;
+  border:0;
+  width:100%;
+  height: 100%;
+  border: 1px solid gray;
+}
+aside.ad iframe[src=""], aside.ad iframe:not([src]){
+  background-color: gray;
+  opacity: .3;
+}
+
+aside.ad:first-of-type{
+  margin-top: calc(60px + 1em);
+  margin-bottom: 1em;
+}
+
+aside.ad:last-of-type{
+  margin-bottom: 5em;
+  margin-top: 1em;
 }
 
 body > footer{
