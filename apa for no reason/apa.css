@@ -308,6 +308,7 @@ aside.ad{
   width: 90%;
   height: 0;
   max-width: 60em;
+  max-height: 9em;
   margin: auto;
   
 }aside.ad iframe{
