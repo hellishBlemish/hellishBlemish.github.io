@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kotoko</title>
+<style>
+  body{
+    background-color: rgb(19,19,19);
+    color: white;
+  }
+  main{
+    counter-reset: chap;
+  }
+  main article::before{
+    counter-increment: chap;
+    content: counter(chap);
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  fieldset{
+    position: fixed;
+    margin:0;
+    z-index: 10;
+    background-color: rgba(19,19,19,.8);
+    border:0;
+    border-bottom: 1px solid gray;
+    top:0;
+    right:0;
+    left:0;
+  }
+  main{
+    padding-top: 2em;
+  }
+</style>
+</head>
+<body>
+
+<fieldset>
+  <select id="input">
+    <option selected value='main'>Entire Work</option>
+  </select>
+  <button onclick="getHTML(input.value)">HTML</button>
+</fieldset>
+
+<main>
+<article id="ch1" tabindex="0">
+
+"Wh-what just-"
+
+Kotoko opened an eye groggily, holding her head. Bright colors flooded her vision, surrounding her like a hurricane.
+
+A soft groan from the side&mdash;she recognized that voice. She tried to turn toward it, but ended up falling over herself in the process. She laid on the ground, eyes spinning. Maybe she'd just lay here for a little while.
+
+The familiar voice spoke. "Did I just get&ndash; no way..."
+
+</i>Yuuki-kun...</i>
+
+Kotoko felt a hand on her wrist, offering to lift her up. Thinking it was Yuuki himself, she accepted and slowly crawled to stand up. The room was finally slowing down.
+
+"Welcome, young adventurers," a man said, right in front of her. Oh, it wasn't Yuuki helping her after all. "I apologize for the whiplash. It's unavoidable, I'm afraid."
+
+"Who?" Kotoko asked, taking back her hand and a few steps. She blinked hard to focus.
+
+"Brother!" Yuuki called behind her. Kotoko turned around instantly. There, she saw Naoki, standing straight and strong. She and Yuuki reached him at the same time, each taking an arm for themselves.
+
+"Irie-kun! Are you okay?" From up close, he did look dizzier than usual.
+
+"Brother, this is&ndash;"
+
+"AAAAAAAHH! SHUT IT!"
+
+She and Yuuki jumped at the sudden shout. It was Kinnosuke, who, lucky for him, was just waking up!
+
+"Can't you see others are sleeping?" he stretched as he spoke, slowly sitting up, "Who in their right mind&ndash; Kotoko? What are you doing here!? Irie too...wait. Huh? Where is this?"
+
+"Kinnchan," Kotoko cried, holding on to Naoki.
+
+The man who'd helped Kotoko up took a step forward, holding his hands up in a calming manner. Feeling safe behind Naoki, Kotoko glared at him and pointed.
+
+"You! Who do you think you are kidnapping a kid and three college students!? How dare you!"
+
+The man looked a little guilty, but didn't get a chance to speak.
+
+Yuuki slapped a hand to his face. "Stupid! Don't you realize the kind of situation we're in? Look around you!"
+
+Kotoko puffed up. Why was he angry at <em>her</em>? They were all victims here and the stranger was clearly a criminal!
+
+Naoki spoke. "Where is this?"
+
+The stranger jumped a little, looking around the room, trying to look for the right words. He brought a hand to his chin, awkward.
+
+Kinnosuke took this time to stand up and join the kidnapped group, standing nearby Kotoko. "Everything here looks so fancy," he muttered to himself.
+
+For the first time, Kotoko looked around at the room. It was all very fancy indeed. It wasn't like the Irie's house either. It wasn't just rich, it was grand. The walls were all far away, the ceiling was too tall. For decoration there were old portraits and the wall itself was chiseled to look elegant. Marble white and golden trims, it was like a palace.
+
+"Is this even Japan anymore?" she asked no one in particular.
+
+Next, she noticed the people. It wasn't just the one man. Surrounding them were all sorts of colorful figures. Ball gowns, Christian robes, was that person wearing armor!?
+
+They were too far away to see any distinguishing features, but she was certain none of them were Japanese. As a matter of fact, now that she was looking at him, the man who had helped her up wasn't Japanese either! He was a&mdash;Kotoko admitted reluctantly&mdash;handsome youth who looked of European descent.
+
+<i>He's not more handsome than <em>my</em> Irie-kun</i>, she thought.
+
+He was also wearing a crown, she realized. A prince!?
+
+Yuuki looked around at his own group, looking for something that he did not find in their expressions. "No way, don't you realize where we are?"
+
+"You know this place, Yuuki?" Naoki asked.
+
+"I&ndash; well&ndash; no, but...this is clearly...a...you know..."
+
+"A what?" Kinnosuke asked impatiently. "Don't freeze up now, you never have any problems giving me trouble."
+
+"Don't worry about that, Yuuki-kun" <i>that</i> being Kinnosuke. "What is this clearly?"
+
+Kotoko paled, eyes darting from the crown in front of her, to the high ceilings, to the person wearing armor in the distance. She turned slowly in a circle, finally taking in the floor's appearance.
+
+"This is..."
+
+A magic circle? Like the one's she saw in those magical girl animes when she was a kid (no, no, reading manga doesn't count! She's too old for anyone to know she reads manga! She refuses to join the anime club, she refuses she refuses she refuses!)
+
+Yuuki glanced at the prince and the floor to make sure he wasn't being silly. Now he was getting embarrassed. Who in their right mind would jump to that conclusion in the first place? Maybe he was wrong.
+
+"Ah, I think, anyway, that it's an&mdash;" he never finished, as Kotoko, who had read the situation much slower than him, had less qualms about blurting it out.
+
+"AN ISEKAI SITUATION!? NO WAY!"
+
+</article>
+<article id="ch2" tabindex="0">
+
+This is the first line of the second chapter, of which I have written...NOTHING!! BlUH!
+
+</article>
+</main>
+<script src="/home/bhellion/common/common.js"></script>
+<script>
+makeParagraphs('main');
+var input = document.querySelector('#input');
+var chaps = document.querySelector('main').querySelectorAll('article');
+for(let i=0; i<chaps.length; i++){
+  let no = i+1;
+  input.innerHTML = input.innerHTML + `<option value="#ch${no}">Chapter ${no}</option>`;
+}
+input.addEventListener('keydown',function(e){
+  if(e.key === 'Enter'){
+    let btn = document.querySelector('[onclick="getHTML(input.value)"]');
+    btn.focus();
+    btn.click();
+  }
+})
+</script>
+</body>
+</html>

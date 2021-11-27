@@ -1,0 +1,2 @@
+cat funny.txt
+hello there hahah
